@@ -1,55 +1,37 @@
-# Wild Clothing (Mobile)
+# WILD CLOTHING — Mobile Application (React + Vite + TypeScript)
 
-Static website structure for GitHub + Vercel deployment.
+A modern, responsive, mobile-first boutique e-commerce web application for **WILD CLOTHING**, rewrote from static HTML/CSS into a modular React single-page application (SPA).
 
-## Recommended repository structure
+## Features
 
-```
-wild-clothing-mobile/
-├── index.html                  # rename or copy from Home page.html
-├── cart-page.html
-├── checkout-page.html
-├── clothing-page.html
-├── accesories-belt.html
-├── accesories-sunglasses.html
-├── accessories-underwear.html
-├── login-page.html
-├── new-arrivals-page.html
-├── perfume-french-avenue.html
-├── perfumes-parfum-complet.html
-├── perfumes.html
-├── sale.html
-├── shop-page.html
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── .gitignore
-└── README.md
-```
+- **Mobile-First App Shell**: Native-feel framed viewport (448px), sticky blur header, dynamic badge counters, and bottom navigation.
+- **Home View**: Dynamic hero banner with action CTAs, filterable category pills, interactive multi-slide New Arrivals carousel, and categorized product grid.
+- **Shop View**: Curated horizontal sliding rail carousels for Outerwear, Hoodies, Sweatshirts, T-Shirts, Shirts, Knitwear, Sunglasses, Parfum Complet, and French Avenue.
+- **Clothing Catalog**: Dedicated collection view with instant sub-category filter tags (Jackets, Gilets, Hoodies, T-Shirts, Sweaters, Knitted Tees, Sweatshirts, Shirts).
+- **Perfumes Collections**: Parfum Complet & French Avenue luxury fragrances with bottle zoom and quick-add overlays.
+- **Accessories**: Sunglasses collection, plus Belts and Underwear teaser states.
+- **Shopping Cart & Bag Drawer**: Live quantity increment/decrement, remove items, subtotal calculation, and persistence via `localStorage` (`mwBag`).
+- **Wishlist Drawer**: Save favorites with interactive hearts and one-tap transfer to shopping bag (`mwWishlist`).
+- **Quick View Modal**: Inspect product photos, select clothing sizes (S, M, L, XL) or fragrance volumes, and adjust quantity.
+- **Checkout Flow**: Complete order placement with contact details, shipping address, delivery notes, payment method selection (Cash on Delivery or Credit Card), and order confirmation modal with generated reference numbers.
+- **User Account**: Sign in, register, and guest checkout support with profile statistics.
 
-## Deployment notes
+## Tech Stack
 
-1. Rename `Home page.html` to `index.html` so Vercel serves your home page at the root URL.
-2. Prefer consistent file names without spaces, using hyphens instead.
-3. Put shared CSS, JS, and images under `assets/` and update references in your HTML.
-4. Commit the repo and push it to GitHub.
+- **Framework**: React 19 + TypeScript
+- **Bundler & Dev Server**: Vite
+- **Styling**: Tailwind CSS v4 + custom Rubik typography
+- **State Management**: React Context (`ShopContext`) + LocalStorage persistence
 
-## Connect to Vercel
+## Development
 
-1. Create a new GitHub repository and push this folder.
-2. In Vercel, choose "Import Project" and select the GitHub repo.
-3. For a static site, there is no build command required. Use the root directory as the project root.
-4. Deploy. Vercel will serve `index.html` automatically.
+```bash
+# Install dependencies
+npm install
 
-## Optional `vercel.json`
+# Start development server on port 3000
+npm run dev
 
-If you want explicit routing, add a `vercel.json` file:
-
-```json
-{
-  "rewrites": [
-    { "source": "/", "destination": "/index.html" }
-  ]
-}
+# Production build
+npm run build
 ```
