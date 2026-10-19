@@ -14,7 +14,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'gr
   return (
     <div
       onClick={() => setSelectedProduct(product)}
-      className="group relative bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-md flex flex-col"
+      className="group relative bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg border border-[#eeeeee]/80 flex flex-col"
     >
       {/* Image container */}
       <div className="relative aspect-[10/13] bg-[#f5f5f5] overflow-hidden">
@@ -34,7 +34,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'gr
             e.stopPropagation();
             toggleWishlist(product.id);
           }}
-          className="absolute top-2 right-2 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm z-10 transition-transform active:scale-90"
+          className="absolute top-2.5 right-2.5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-sm z-10 transition-transform active:scale-90 hover:scale-105"
           aria-label="Wishlist"
         >
           <svg
@@ -50,27 +50,30 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'gr
           </svg>
         </button>
 
-        {/* Quick Add overlay */}
-        <div className="absolute inset-x-0 bottom-0 p-2.5 bg-gradient-to-t from-black/75 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-center">
+        {/* Quick Add overlay on desktop hover */}
+        <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 hidden sm:flex items-center">
           <button
             onClick={(e) => {
               e.stopPropagation();
               addToBag(product);
             }}
-            className="w-full py-2 bg-[#291409] text-white text-[11px] font-semibold tracking-wider uppercase rounded shadow hover:bg-[#3d1f0e] active:scale-95 transition-transform cursor-pointer"
+            className="w-full py-2.5 bg-[#291409] text-white text-xs font-bold tracking-widest uppercase rounded-lg shadow-md hover:bg-[#3d1f0e] active:scale-95 transition-all cursor-pointer"
           >
-            Add to Bag
+            Quick Add to Bag
           </button>
         </div>
       </div>
 
       {/* Info */}
-      <div className="p-2.5 flex flex-col justify-between flex-1">
+      <div className="p-3 sm:p-4 flex flex-col justify-between flex-1">
         <div>
-          <h3 className="text-[13px] font-medium text-[#291409] line-clamp-1 leading-snug">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#888888] block mb-1">
+            {product.sub || product.cat}
+          </span>
+          <h3 className="text-xs sm:text-sm font-semibold text-[#291409] line-clamp-1 leading-snug">
             {product.name}
           </h3>
-          <p className="text-[12.5px] font-semibold text-[#888888] mt-1">
+          <p className="text-xs sm:text-sm font-extrabold text-[#291409] mt-1.5">
             {product.price}
           </p>
         </div>
@@ -81,9 +84,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, variant = 'gr
             e.stopPropagation();
             addToBag(product);
           }}
-          className="mt-2.5 w-full py-1.5 bg-[#291409] text-white text-[11px] font-semibold tracking-wider uppercase rounded sm:hidden active:scale-95 transition-transform"
+          className="mt-3 w-full py-2 bg-[#291409] text-white text-[11px] font-bold tracking-wider uppercase rounded-lg sm:hidden active:scale-95 transition-transform"
         >
-          + Bag
+          + Add to Bag
         </button>
       </div>
     </div>

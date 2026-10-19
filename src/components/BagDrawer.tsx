@@ -28,7 +28,7 @@ export const BagDrawer: React.FC = () => {
         className="fixed inset-0 bg-black/50 z-50 transition-opacity backdrop-blur-[2px]"
       />
 
-      <aside className="fixed top-0 bottom-0 right-0 max-w-[360px] w-[90%] bg-[#FEFCFB] z-50 flex flex-col shadow-2xl animate-in slide-in-from-right duration-300">
+      <aside className="fixed top-0 bottom-0 right-0 max-w-[420px] w-[90%] bg-[#FEFCFB] z-50 flex flex-col shadow-2xl animate-in slide-in-from-right duration-300">
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-[#eeeeee]">
           <span className="font-bold text-[16px] tracking-wide text-[#291409]">

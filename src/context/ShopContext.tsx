@@ -36,6 +36,8 @@ interface ShopContextType {
   user: UserProfile;
   login: (email: string, name?: string) => void;
   logout: () => void;
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
 }
 
 const ShopContext = createContext<ShopContextType | undefined>(undefined);
@@ -47,6 +49,7 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isWishOpen, setIsWishOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   // Initialize Bag from localStorage
   const [cart, setCart] = useState<Record<string, CartItem>>(() => {
@@ -54,7 +57,6 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
       const saved = localStorage.getItem('mwBag');
       if (!saved) return {};
       const parsed = JSON.parse(saved);
-      // Ensure compatibility if array was saved previously
       if (Array.isArray(parsed)) {
         const map: Record<string, CartItem> = {};
         parsed.forEach((it: any) => {
@@ -275,6 +277,8 @@ export const ShopProvider: React.FC<{ children: React.ReactNode }> = ({ children
         user,
         login,
         logout,
+        searchQuery,
+        setSearchQuery,
       }}
     >
       {children}

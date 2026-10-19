@@ -2,6 +2,7 @@ import React from 'react';
 import { useShop } from './context/ShopContext';
 import { Header } from './components/Header';
 import { BottomNav } from './components/BottomNav';
+import { Footer } from './components/Footer';
 import { MenuDrawer } from './components/MenuDrawer';
 import { BagDrawer } from './components/BagDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
@@ -56,24 +57,27 @@ export const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#e5e5e5] flex justify-center">
-      {/* Mobile Frame Container */}
-      <div className="w-full max-w-[448px] min-h-screen bg-[#FEFCFB] relative flex flex-col shadow-xl">
-        <Header />
+    <div className="min-h-screen bg-[#FEFCFB] text-[#291409] flex flex-col selection:bg-[#291409] selection:text-white">
+      {/* Sticky Top Header (Desktop & Mobile) */}
+      <Header />
 
-        <main className="flex-1 pt-[56px] pb-[72px] px-4">
-          {renderView()}
-        </main>
+      {/* Main Content Area */}
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8">
+        {renderView()}
+      </main>
 
-        <BottomNav />
+      {/* Desktop & Mobile Footer */}
+      <Footer />
 
-        {/* Overlays & Drawers */}
-        <MenuDrawer />
-        <BagDrawer />
-        <WishlistDrawer />
-        <ProductDetailModal />
-        <Toast />
-      </div>
+      {/* Mobile Bottom Navigation (lg:hidden) */}
+      <BottomNav />
+
+      {/* Drawers & Modals */}
+      <MenuDrawer />
+      <BagDrawer />
+      <WishlistDrawer />
+      <ProductDetailModal />
+      <Toast />
     </div>
   );
 };

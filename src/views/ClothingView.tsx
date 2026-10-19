@@ -34,24 +34,27 @@ export const ClothingView: React.FC = () => {
 
   return (
     <div className="pb-16 pt-2">
-      <div className="text-center py-4 mb-2">
-        <h1 className="text-2xl font-bold tracking-widest text-[#291409] uppercase">
+      <div className="text-center py-6 mb-4 max-w-xl mx-auto">
+        <span className="text-xs font-bold uppercase tracking-[3px] text-[#888888] block mb-1">
+          Wardrobe Staples
+        </span>
+        <h1 className="text-3xl sm:text-4xl font-black tracking-widest text-[#291409] uppercase">
           Clothing
         </h1>
-        <p className="text-xs text-[#888888] mt-1">
-          {filteredItems.length} styles available
+        <p className="text-xs sm:text-sm text-[#888888] mt-1.5">
+          {filteredItems.length} styles available • Heavyweight cotton &amp; tailored silhouettes
         </p>
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-1.5 overflow-x-auto no-scrollbar pb-2 mb-4 px-1">
+      <div className="flex gap-2 overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center pb-3 mb-8 px-1">
         {filterTabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setSelectedSub(tab.id)}
-            className={`shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border transition-colors ${
+            className={`shrink-0 px-4 py-2 rounded-full text-xs font-semibold tracking-wider uppercase border transition-all ${
               selectedSub === tab.id
-                ? 'bg-[#291409] text-white border-[#291409]'
+                ? 'bg-[#291409] text-white border-[#291409] shadow-sm font-bold'
                 : 'bg-transparent text-[#666666] border-black/10 hover:border-[#291409]'
             }`}
           >
@@ -61,7 +64,7 @@ export const ClothingView: React.FC = () => {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-7">
         {filteredItems.map((p) => (
           <ProductCard key={p.id} product={p} />
         ))}

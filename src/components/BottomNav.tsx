@@ -3,7 +3,7 @@ import { useShop } from '../context/ShopContext';
 import { ViewType } from '../types';
 
 export const BottomNav: React.FC = () => {
-  const { currentView, setCurrentView, cartCount, setIsBagOpen, setIsWishOpen } = useShop();
+  const { currentView, setCurrentView, cartCount, setIsWishOpen } = useShop();
 
   const handleNav = (targetView: ViewType) => {
     setCurrentView(targetView);
@@ -11,12 +11,12 @@ export const BottomNav: React.FC = () => {
   };
 
   return (
-    <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[448px] h-[64px] bg-[#FEFCFB] border-t border-[#eeeeee] flex items-center justify-around z-40 px-2 pb-[env(safe-area-inset-bottom,0px)]">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 w-full h-[64px] bg-[#FEFCFB] border-t border-[#eeeeee] flex items-center justify-around z-40 px-2 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-2px_10px_rgba(0,0,0,0.03)]">
       {/* Home */}
       <button
         onClick={() => handleNav('home')}
         className={`flex-1 h-full flex flex-col items-center justify-center gap-1 transition-colors ${
-          currentView === 'home' ? 'text-[#291409] font-bold' : 'text-[#888888] font-medium'
+          currentView === 'home' || currentView === 'new-arrivals' ? 'text-[#291409] font-bold' : 'text-[#888888] font-medium'
         }`}
       >
         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -57,10 +57,7 @@ export const BottomNav: React.FC = () => {
 
       {/* Cart */}
       <button
-        onClick={() => {
-          // If already on cart view, open bag drawer or navigate to cart
-          handleNav('cart');
-        }}
+        onClick={() => handleNav('cart')}
         className={`flex-1 h-full flex flex-col items-center justify-center gap-1 transition-colors relative ${
           currentView === 'cart' || currentView === 'checkout' ? 'text-[#291409] font-bold' : 'text-[#888888] font-medium'
         }`}

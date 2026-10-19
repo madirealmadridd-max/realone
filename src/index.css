@@ -1,13 +1,12 @@
 @import "tailwindcss";
 
 :root {
-  --frame-width: 448px;
   --color-bg: #FEFCFB;
   --color-text: #291409;
   --color-muted: #888888;
   --color-border: #eeeeee;
   --color-overlay: rgba(0, 0, 0, 0.5);
-  --header-height: 56px;
+  --header-height: 64px;
   --bottom-nav-height: 64px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
@@ -20,7 +19,7 @@
 
 body {
   font-family: 'Rubik', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #e5e5e5;
+  background-color: var(--color-bg);
   color: var(--color-text);
   margin: 0;
   padding: 0;
